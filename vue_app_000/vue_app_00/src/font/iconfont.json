@@ -1,0 +1,37 @@
+{
+  "id": "",
+  "name": "",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "798050",
+      "name": "成功",
+      "font_class": "chenggong",
+      "unicode": "e632",
+      "unicode_decimal": 58930
+    },
+    {
+      "icon_id": "936871",
+      "name": "成功",
+      "font_class": "chenggong1",
+      "unicode": "e635",
+      "unicode_decimal": 58933
+    },
+    {
+      "icon_id": "1240780",
+      "name": "删除",
+      "font_class": "shanchu",
+      "unicode": "e619",
+      "unicode_decimal": 58905
+    },
+    {
+      "icon_id": "10292039",
+      "name": "删 除",
+      "font_class": "shanchu1",
+      "unicode": "e614",
+      "unicode_decimal": 58900
+    }
+  ]
+}
