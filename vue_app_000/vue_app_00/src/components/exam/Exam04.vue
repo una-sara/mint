@@ -21,12 +21,25 @@
         </mt-radio>
 
         <mt-button @click="get4">获取东哥的年龄</mt-button>
+        
+        <!--复选框列表-->
+        <mt-checklist
+         title="复选框列表"
+         v-model="val5"
+         :options="['a选项','b选项','c选项']">
+        </mt-checklist>
+
+        <mt-button @click="get5">
+            获取值
+        </mt-button>
+        
     </div>
 </template>
 <script>
 export default{
     data(){
         return {
+            val5:[],//保存复选框选中值
             val2:true,
             val3:'',
             val4:'',//保存东哥年龄
@@ -38,6 +51,10 @@ export default{
           }//状态原始值
     },
     methods:{
+        get5(){
+          //功能：获取复选框列表选中值
+          console.log(this.val5);
+        },
         get4(){
               console.log(this.val4);
         },
