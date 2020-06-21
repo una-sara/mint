@@ -13,14 +13,34 @@
         <mt-button @click="get3">
             获取用户选中值
         </mt-button>
+
+        <mt-radio
+         title="东哥今年多大了" 
+         v-model="val4"
+         :options="options">
+        </mt-radio>
+
+        <mt-button @click="get4">获取东哥的年龄</mt-button>
     </div>
 </template>
 <script>
 export default{
     data(){
-        return {val2:true,val3:''}//状态原始值
+        return {
+            val2:true,
+            val3:'',
+            val4:'',//保存东哥年龄
+            options:[
+                {label:"去年",value:"24"},
+                {label:'今年',value:'23'},
+                {label:'明年',value:'22'}
+            ]//东哥年龄列表
+          }//状态原始值
     },
     methods:{
+        get4(){
+              console.log(this.val4);
+        },
         get3(){
             //功能:获取用户选中的单选列表中值
             console.log(this.val3);
