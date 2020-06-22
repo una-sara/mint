@@ -2,7 +2,8 @@
   <div>
       <h1>Fa09.vue父组件</h1>
       <!--3.调用子组件-->
-      <sub09 msg="测试数据123" :add3="myadd3"></sub09>
+      <sub09 msg="测试数据123" :add3="myadd3" 
+      :img3="require('../../assets/cart.png')"></sub09>
   </div>
 </template>
 <script>
