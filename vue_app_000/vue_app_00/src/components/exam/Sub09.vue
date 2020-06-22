@@ -8,6 +8,7 @@
         <h3 @click="add3">{{msg}}</h3>
         <!--(3)接收图片-->
         <img :src="img3"/>
+        
     </div>
 </template>
 <script>
