@@ -23,12 +23,8 @@
 export default {
     data(){
         return {
-            active:""
+            active:"tab3"
         }
-    },
-    methods:{
-        
     }
-
 }
 </script>

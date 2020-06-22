@@ -9,6 +9,8 @@ import Exam03 from "./components/exam/Exam03.vue"
 import Exam04 from "./components/exam/Exam04.vue"
 import Exam05 from "./components/exam/Exam05.vue"
 import Exam06 from "./components/exam/Exam06.vue"
+import Exam07 from "./components/exam/Exam07.vue"
+import Fa08 from "./components/exam/Fa08.vue"
 
 Vue.use(Router)
 export default new Router({
@@ -21,6 +23,8 @@ export default new Router({
     {path:'/Exam04',component:Exam04},
     {path:'/Exam05',component:Exam05},
     {path:'/Exam06',component:Exam06},
+    {path:'/Exam07',component:Exam07},
+    {path:'/Fa08',component:Fa08},
     {path:'/Home',component:Home},
     {path:'/',component:HelloContainer},
   ]
