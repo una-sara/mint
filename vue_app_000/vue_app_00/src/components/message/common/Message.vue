@@ -4,7 +4,7 @@
        <!--(1)左侧图片与标题-->
        <div class="leftimgtxt">
            <img :src="imgUrl" 
-           class="imgStyle"/>
+           class="imgstyle"/>
            <!--1.2标题和子标题-->
            <div class="rightOfImg">
                <span class="titleable">{{title}}</span>
@@ -21,7 +21,7 @@ export default{
     props:{
         imgUrl:{default:""},//左侧图片
         title:{default:""},//标题
-        subtitle:{default:""},//子标题
+        subtitle:{default:""},//发送时间
         sendtime:{default:""}//发送时间
     }
     // 图片 标题 子标题 发送时间
@@ -43,9 +43,9 @@ export default{
       align-items: center;
   }
   /**3.图片 */
-  .imgStyle{
-      width: 50px;
-      height:50px;
+  .imgstyle{
+      width:50px;
+       height:50px;
   }
   /**4.标题与子标题按列排放 */
   .rightOfImg{
