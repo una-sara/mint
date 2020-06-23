@@ -1,6 +1,5 @@
 <template>
    <div>
-       
        <!-- <h1>多条消息组件MessageList.vue</h1>
        <h1>将MessageList.vue临时修改为全局组件</h1>
        <h1>给组件分配访问路径/MessageList</h1> -->

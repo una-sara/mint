@@ -1,15 +1,16 @@
 <template>
  <div class="app-container">
+    <!--容器负责显示所有组件 Home-->
     <router-view></router-view>
  </div>
 </template>
 
 <style>
-   .app-container{
-     padding-top:40px;
-     padding-bottom:50px;
-     overflow-x:hidden;
-   }
+.app-container{
+   padding-top:0px;
+   padding-bottom:0px;
+   overflow-x:hidden;
+}
 
  .mui-bar-tab .mui-tab-item-tao.mui-active {
     color: #007aff;
