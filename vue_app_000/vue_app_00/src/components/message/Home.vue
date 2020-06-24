@@ -24,28 +24,31 @@
             <!--(3)tabbar列表-->
             <mt-tabbar fixed v-model="active">
                <mt-tab-item id="message" 
-                  @click.native="changeState">
+                  @click.native="changeState(0)">
                   <tabbaricon 
                   :selectedImage="require('../../assets/ic_weixin_selected.png')" 
                   :normalImage="require('../../assets/ic_weixin_normal.png')"
                   :focused="currentIndex[0].isSelect"></tabbaricon>
                    微信
                </mt-tab-item>
-               <mt-tab-item id="contact">
+               <mt-tab-item id="contact" 
+                @click.native="changeState(1)">
                   <tabbaricon 
                   :selectedImage="require('../../assets/ic_contacts_selected.png')" 
                   :normalImage="require('../../assets/ic_contacts_normal.png')"
                   :focused="currentIndex[1].isSelect"></tabbaricon>   
                    通讯录
                </mt-tab-item>
-               <mt-tab-item id="find">
+               <mt-tab-item id="find"
+               @click.native="changeState(2)">
                     <tabbaricon 
                   :selectedImage="require('../../assets/ic_find_selected.png')" 
                   :normalImage="require('../../assets/ic_find_normal.png')"
                   :focused="currentIndex[2].isSelect"></tabbaricon>
                    发现
                </mt-tab-item>
-               <mt-tab-item id="me">
+               <mt-tab-item id="me" 
+               @click.native="changeState(3)">
                     <tabbaricon 
                   :selectedImage="require('../../assets/ic_me_selected.png')" 
                   :normalImage="require('../../assets/ic_me_normal.png')"
@@ -93,14 +96,31 @@ export default{
         //父组件定义函数,将其传递子组件
         mysearch(){console.log("搜索")},
         myadd3(){console.log("添加")},
-        changeState(){
+        changeState(idx){
             //功能：当点底部按钮切换图片状态
-            console.log(123);
+            //当前图片训中其他默认 
+            //参数index:表示按钮下标
+            console.log(idx);
+            //功能:当点底部按钮切换图片状态
+            //当前图片选中其他默认
+            //参数idx：表示按钮下标
+            //1：创建循环遍历状态数组中所有值
+            for(var i =0;i<this.currentIndex.length;i++){
+                //2:判断如果参数与当前元素下标相同
+                if(i==idx){
+                    //3:当前元素状态修改true
+                    this.currentIndex[i].isSelect=true;
+                }else{
+                    //4:其他元素状态修改为false
+                    this.currentIndex[i].isSelect=false;       
+                 }
+            }
+
         }
     }
 }
 </script>
-<style>
+<style scoped>
  /**1：添加二个样式 */
  .page-tabbar{
      overflow:hidden;/**元素溢出隐藏 */
@@ -109,4 +129,16 @@ export default{
       overflow:auto;/**溢出数据显示滚动条 */
       padding-bottom:60px;/**底部导航条 */
   }
+ /*home.vue*/
+ /*覆盖原组件中样式 tabbar按钮中文字颜色*/
+ /*(1)覆盖原组件中样式 默认文字颜色*/
+ .mint-tabbar>.mint-tab-item{
+   color:#999;
+ }
+ /*(2)覆盖原组件中样式 选中文字颜色*/
+ .mint-tabbar>.mint-tab-item.is-selected{
+    background-color:transparent;/*透明*/
+    color:#45c018;/*文字颜色*/
+ }
+ 
 </style>
