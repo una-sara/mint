@@ -12,18 +12,22 @@ import Exam06 from "./components/exam/Exam06.vue"
 import Exam07 from "./components/exam/Exam07.vue"
 import Fa08 from "./components/exam/Fa08.vue"
 import Fa09 from "./components/exam/Fa09.vue"
+
 //微信消息项目
 //(1)消息项目入口文件
 import Home3 from "./components/message/Home.vue"
 //(2)临时全局组件
 import MessageList from "./components/message/common/MessageList.vue"
 
+//(1)登录组件
+import Login from "./components/xz/Login.vue"
 
 Vue.use(Router)
 export default new Router({
   routes: [
     //2:配置自定义组件路径
     //浏览器：http://127.0.1:5050/#/Exam01
+    {path:'/Login',component:Login},
     {path:'/Exam01',component:Exam01},
     {path:'/Exam02',component:Exam02},
     {path:'/Exam03',component:Exam03},

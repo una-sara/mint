@@ -26,7 +26,7 @@ server.use(cors({
     origin:["http://127.0.0.1:5050",
     "http://localhost:5050"],
     credentials:true
-}))
+}));
 //功能:完成用户登录
 //测试：127.0.0.1:8080/login?uname=tom&upwd=123
 //测试：127.0.0.1:8080/login?uname=tom&upwd=126
@@ -45,11 +45,8 @@ server.get("/login",(req,res)=>{
     if(result.length==0){
         res.send({code:-1,msg:'用户名或密码有错误'});
     }else{
-
         res.send({code:1,msg:'登录成功'});
     }
-
     });
-
 });
 
