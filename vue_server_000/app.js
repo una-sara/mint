@@ -27,6 +27,15 @@ server.use(cors({
     "http://localhost:5050"],
     credentials:true
 }));
+//6:配置session
+//session配置一定要在所有请求之前
+server.use(session({
+    secret:"128位字符串",//安全字符串
+    resave:true,
+    saveUninitialized:true //保存初始化数据
+}));
+
+
 //功能:完成用户登录
 //测试：127.0.0.1:8080/login?uname=tom&upwd=123
 //测试：127.0.0.1:8080/login?uname=tom&upwd=126
@@ -45,6 +54,13 @@ server.get("/login",(req,res)=>{
     if(result.length==0){
         res.send({code:-1,msg:'用户名或密码有错误'});
     }else{
+        //获取当前登录用户id
+        //result=[{id:2}]
+        var id=result[0].id;
+        //将用id保存session对象中
+        //uid当前登录用户凭证
+        req.session.uid=id;
+        console.log(req.session);
         res.send({code:1,msg:'登录成功'});
     }
     });
