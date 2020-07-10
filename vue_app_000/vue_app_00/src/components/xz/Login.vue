@@ -36,9 +36,19 @@ export default{
                 return;
             }
             //5.发送ajax
-            //6.接收服务器返回数据
-            //7.失败 提示
-            //8.成功 跳转
+            var url ="login";
+            var obj={uname:u,upwd:p};
+            this.axios.get(url,{params:obj}).then(res=>{
+                //6.接收服务器返回数据
+             var code=res.data.code;
+                if(code==-1){
+                    //7.失败 提示
+                    this.$messagebox("消息","用户名或密码有误");
+                }else{
+                    //8.成功 跳转
+                    this.$router.push("/product");
+                }
+            });
         }
     }
 }
