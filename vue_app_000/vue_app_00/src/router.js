@@ -21,12 +21,15 @@ import MessageList from "./components/message/common/MessageList.vue"
 
 //(1)登录组件
 import Login from "./components/xz/Login.vue"
+//(2)商品列表
+import Product from "./components/xz/Product.vue"
 
 Vue.use(Router)
 export default new Router({
   routes: [
     //2:配置自定义组件路径
     //浏览器：http://127.0.1:5050/#/Exam01
+    {path:'/Product',component:Product},
     {path:'/Login',component:Login},
     {path:'/Exam01',component:Exam01},
     {path:'/Exam02',component:Exam02},
