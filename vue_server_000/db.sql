@@ -12,3 +12,10 @@ CREATE TABLE xz_login(
 INSERT INTO xz_login VALUES(null,'tom',md5('123'));
 INSERT INTO xz_login VALUES(null,'jerry',md5('123'));
 
+#功能商品添加
+#功能三：向商品表中添加一列 img_url
+USE xz;
+ALTER TABLE xz_laptop ADD img_url VARCHAR(255);
+#更新商品表图片 01.jpg 02.jpg
+UPDATE xz_laptop SET img_url="01.jpg" WHERE lid=1;
+UPDATE xz_laptop SET img_url="02.jpg" WHERE lid>1;

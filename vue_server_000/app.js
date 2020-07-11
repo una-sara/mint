@@ -66,3 +66,38 @@ server.get("/login",(req,res)=>{
     });
 });
 
+
+//功能二：商品分页显示77~109
+//1:接收客户请求  /product GET
+//http://127.0.0.1:8080/product
+//http://127.0.0.1:8080/product?pno=2
+//http://127.0.0.1:8080/product?pno=3&pageSize=5
+server.get("/product",(req,res)=>{
+    //2:接收客户请求数据
+    //pno 页码 pageSize 页大小
+    var pno=req.query.pno;
+    var ps=req.query.pageSize;
+    //3:如果客户没有请示数据设置默认数据
+    //pno=1  pageSize=4
+    if(!pno){
+        pno=1;
+    }
+    if(!ps){
+        ps=4;
+    }
+    //4:创建sql语句
+    var sql="SELECT lid,lname,price,img_url";
+    sql+=" FROM xz_laptop";
+    sql+=" LIMIT ?,?";
+    var offset=(pno-1)*ps;//起始记录数  ? 
+    ps= parseInt(ps); //行数
+    //5:发送sql语句
+    pool.query(sql,[offset,ps],(err,result)=>{
+        //6:获取返回结果发送客户端
+        if(err) throw err;
+        res.send({code:1,msg:"查询成功",data:result});
+    });
+
+});
+
+
