@@ -15,3 +15,15 @@
       </div>
    </div>
 </template>
+<style scoped>
+/**1:最外层父元素：弹性布局 */
+.product-app{
+    display:flex;/**弹性布局 */
+    flex-wrap:wrap;/**指定子元素换行 */
+    justify-content: space-between;/**两端对齐 */
+    padding:4px;/**内边距 */
+}
+/**2:修饰当前商品 49% */
+/**3:修饰当前商品中图片 */
+/**4:修饰当前商品价格 */
+</style>
