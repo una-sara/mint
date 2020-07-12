@@ -30,11 +30,13 @@ server.use(cors({
 //6:配置session
 //session配置一定要在所有请求之前
 server.use(session({
-    secret:"128位字符串",//安全字符串
-    resave:true,
-    saveUninitialized:true //保存初始化数据
+   secret:"128位字符串",    //#安全字符串
+   resave:true,            //#每次请求保存数据 
+   saveUninitialized:true  //#保存初始化数据
 }));
-
+//7:配置静态目录
+//http://127.0.0.1:8080/01.jpg
+server.use(express.static('public'));
 
 //功能:完成用户登录
 //测试：127.0.0.1:8080/login?uname=tom&upwd=123
