@@ -99,7 +99,55 @@ server.get("/product",(req,res)=>{
         if(err) throw err;
         res.send({code:1,msg:"查询成功",data:result});
     });
-
 });
 
-
+//功能三:将指定商品添加至购物车
+//#此功能先行条件先登录
+//1:接收客户端请求 /addcart GET
+//http://127.0.0.1:8080/login?uname=tom&upwd=123
+//http://127.0.0.1:8080/addcart?lid=1&lname=kk&price=9
+server.get("/addcart",(req,res)=>{
+    //2:判断当前用户是否登录成功
+    //  uid
+    //  如果uid为undefined 没登录
+    var uid = req.session.uid;
+    if(!uid){
+        res.send({code:-1,msg:"请先登录"});
+        return;
+    }
+    //3:获取客户端数据???小心处理
+    //  lid    商品编号
+    //  price  商品价格
+    //  lname  商品名称
+    var lid = req.query.lid;
+    var price = req.query.price;
+    var lname = req.query.lname;
+    //console.log(lid+":"+price+":"+lname)
+    //res.send(lid+":"+price+":"+lname);
+    //4:创建查询sql:当前用户是否购买此商品
+    var sql = "SELECT id FROM xz_cart";
+    sql+=" WHERE uid = ? AND lid = ?";
+    //5:执行sql语句
+    pool.query(sql,[uid,lid],(err,result)=>{
+    if(err)throw err;
+    //6:在回调函数中判断下一步操作
+    //  没购买过此商品  添加
+    //  己购买过此商品  更新
+    if(result.length==0){
+    var sql = `INSERT INTO xz_cart VALUES(null,${lid},${price},1,'${lname}',${uid})`;
+    }else{
+    var sql = `UPDATE xz_cart SET count=count+1 WHERE uid=${uid} AND lid=${lid}`;
+    }
+  //7:执行sql获取返回结果
+  pool.query(sql,(err,result)=>{
+    if(err)throw err;
+    //8:如果sql UPDATE INSERT DELETE
+    //判断执行成功 result.affectedRows 影响行数
+    if(result.affectedRows>0){
+     res.send({code:1,msg:"商品添加成功"});
+    }else{
+     res.send({code:-2,msg:"添加失败"}); 
+    }
+  });
+});
+});
